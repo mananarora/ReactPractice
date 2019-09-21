@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
-import Person from "./Persons/Person.js";
 import {Persons} from "./Persons/Persons";
 import './App.css';
 
 class App extends Component  {
     state = {
-        FirstName:"",
-        Age:"",
-        Fruit:"",
         Persons:[
             {name:'Manan', Address:'Uttarakhand'},
             {name:'Aman', Address:'Chandigarh'},
@@ -16,15 +12,18 @@ class App extends Component  {
         showNames:false
     };
 
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name] : event.target.value
-        });
-    };
-
     toggleHandler = () => {
         this.setState({
                 showNames : !this.state.showNames
+        });
+    };
+
+    deleteHandler = (index) => {
+        //const persons = this.state.Persons.slice(); //Earlier approach of not using slice was modifying the state as it copies pointer.
+        const persons = [...this.state.Persons]; // This is the best practice to copy the existing state
+        persons.splice(index, 1);
+        this.setState({
+            Persons : persons
         });
     };
 
@@ -33,31 +32,18 @@ class App extends Component  {
         if(this.state.showNames){
             persons= (
                 <div>
-                    {this.state.Persons.map(person => {
+                    {this.state.Persons.map((person, index) => {
                         return <Persons
                             name={person.name}
                             address={person.Address}
+                            click={()=>this.deleteHandler(index)}
                         />
-                    })};
+                    })}
                 </div>
             )
         }
         return (
             <div className="App">
-                <form>
-                    <h1>Hello {this.state.Persons[0].name}</h1>
-                    Name: <input type="text" name="FirstName" placeholder="first name" onChange={this.handleChange}/>
-                    <br/>
-                    Age: <input type="text" name="Age" placeholder="age" onChange={this.handleChange}/>
-                </form>
-
-                <select name="Fruit" onChange={this.handleChange}>
-                    <option selected disabled hidden>Choose here</option>
-                    <option>apple</option>
-                    <option>orange</option>
-                    <option>mango</option>
-                </select>
-                <Person name={this.state.FirstName} age={this.state.Age} fruit={this.state.Fruit} />
                 <button onClick={this.toggleHandler}>Toggle Names</button>
                 {persons}
             </div>
