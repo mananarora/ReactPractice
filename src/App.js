@@ -31,18 +31,16 @@ class App extends Component  {
     render() {
         let persons;
         if(this.state.showNames){
-            persons=
+            persons= (
                 <div>
-                <Persons
-                    name={this.state.Persons[0].name}
-                    address={this.state.Persons[0].Address}/>
-                <Persons
-                    name={this.state.Persons[1].name}
-                    address={this.state.Persons[1].Address}/>
-                <Persons
-                    name={this.state.Persons[2].name}
-                    address={this.state.Persons[2].Address}/>
-            </div>
+                    {this.state.Persons.map(person => {
+                        return <Persons
+                            name={person.name}
+                            address={person.Address}
+                        />
+                    })};
+                </div>
+            )
         }
         return (
             <div className="App">
