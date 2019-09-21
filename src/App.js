@@ -29,6 +29,21 @@ class App extends Component  {
     };
 
     render() {
+        let persons;
+        if(this.state.showNames){
+            persons=
+                <div>
+                <Persons
+                    name={this.state.Persons[0].name}
+                    address={this.state.Persons[0].Address}/>
+                <Persons
+                    name={this.state.Persons[1].name}
+                    address={this.state.Persons[1].Address}/>
+                <Persons
+                    name={this.state.Persons[2].name}
+                    address={this.state.Persons[2].Address}/>
+            </div>
+        }
         return (
             <div className="App">
                 <form>
@@ -46,20 +61,7 @@ class App extends Component  {
                 </select>
                 <Person name={this.state.FirstName} age={this.state.Age} fruit={this.state.Fruit} />
                 <button onClick={this.toggleHandler}>Toggle Names</button>
-                {
-                    this.state.showNames ?
-                    <div>
-                        <Persons
-                            name={this.state.Persons[0].name}
-                            address={this.state.Persons[0].Address}/>
-                        <Persons
-                            name={this.state.Persons[1].name}
-                            address={this.state.Persons[1].Address}/>
-                        <Persons
-                            name={this.state.Persons[2].name}
-                            address={this.state.Persons[2].Address}/>
-                    </div> : null
-                }
+                {persons}
             </div>
         );
     }
