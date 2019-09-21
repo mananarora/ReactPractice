@@ -4,9 +4,10 @@ export const Persons = (props) => {
     return (
         <div>
             <p onClick={props.click}>
-                {props.name}
+                {props.name}<br/>
                 {props.address}
             </p>
+            <input type="text" onChange={props.handleChange} value={props.name}/>
         </div>
     );
 };
