@@ -6,18 +6,18 @@ import {Display} from "./Components/Display";
 class App extends Component  {
 
     state = {
-      value : ['df']
+      display : ""
     };
     handleClick = (event) => {
         this.setState({
-            value : event.target.value
+            [event.target.name] : event.target.value
         });
     };
     render() {
         return (
             <div>
-                <Display value={this.state.value}/>
-                <KeyPad clicked={(event) => this.handleClick(event)}/>
+                {/*<Display value={this.state.value}/>*/}
+                <KeyPad clicked={this.handleClick}/>
             </div>
         );
     }
