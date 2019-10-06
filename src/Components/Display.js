@@ -1,14 +1,13 @@
-import React, {Component} from 'react'
+import React from 'react'
+import '../App.css';
 
-class Display extends Component {
-    state = {
-        result : ""
-    };
-
-    render () {
-        return
-    };
-    // const [display, setDisplay] = React.useState("0" );
-    // setDisplay(props.value!=="" ? props.value : "");
-
+const Display = (props) => {
+    let result = props.display;
+    return (
+        <div className="display">
+            <p>{result}</p>
+        </div>
+    )
 };
+
+export default Display;
