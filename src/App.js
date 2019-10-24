@@ -1,49 +1,41 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Validator} from "./Components/Validator";
-import {Char} from "./Components/Char";
+import {FormattedMessage, FormattedDate} from 'react-intl';
+import * as moment from 'moment'
+import 'moment-timezone';
 
 class App extends Component {
-
     state = {
-        char : ""
-    };
-
-    handleChange = (event) => {
-        this.setState({
-            char : event.target.value
-        });
-    };
-
-    deleteHandler = (index) => {
-        let charList = [...this.state.char];
-        charList.splice(index,1);
-        let char = charList.join('');
-        this.setState({
-            char:char
-        });
+        locale: 'en-US',
+        name: 'Eric',
+        unreadCount: 1000,
     };
 
     render() {
-        const charList = this.state.char.split('').map((ch, index) => {
-            return (
-                <Char
-                    chars = {ch}
-                    clicked = {
-                        () => {this.deleteHandler(index)}
-                    }
-                />
-            )
-        });
         return (
-            <div className="App">
-                <input type="text" onChange={this.handleChange} value={this.state.char}/>
-                <p>{this.state.char} </p>
-                <Validator len = {this.state.char.length} />
-                {charList}
+            <div>
+                <FormattedDate
+                value={moment().tz("America/Chicago").format()}
+                year='numeric'
+                month='short'
+                day='numeric'
+                hour='2-digit'
+                minute='2-digit'
+                hour12={false}
+                timeZone='America/Chicago'
+                timeZoneName='short'
+            />
+                <br/>
+                <FormattedMessage
+                    id="welcome"
+                    defaultMessage={`Hello ${this.state.name}, you have ${this.state.unreadCount}`}
+                />
             </div>
         );
-    }
-}
+    };
+};
 
 export default App;
+
+//npm install moment-timezone --save
+//npm install moment
