@@ -1,33 +1,29 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Base from 'terra-base';
-import { FormattedMessage } from 'react-intl';
-import Image from 'terra-image';
-import DemographicsBanner from 'terra-demographics-banner';
+import {FormattedDate} from 'react-intl';
+import moment from "moment";
+import "moment-timezone";
 
-const Toggle = () => (
-    <button type="button">
-        <FormattedMessage id="App.toggle" />
-    </button>
-);
-
-const App = () => (
-    <div>
-        <Base locale="en">
-            <Toggle />
-            <DemographicsBanner
-                applicationContent={<span className="risk-score">5%</span>}
-                age="25 Years"
-                dateOfBirth="May 9, 1993"
-                gender="Male"
-                gestationalAge="April 5, 2016"
-                identifiers={{ MRN: 12343, REA: '3JSDA' }}
-                photo={<Image alt="My Cat" src="http://lorempixel.com/50/50/animals/7/" />}
-                personName="Johnathon Doe"
-                postMenstrualAge="April 7, 2016"
-                preferredFirstName="John"
-            />
-        </Base>
-    </div>
-);
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Base locale="en">
+                    <FormattedDate
+                        value={moment().tz('America/Chicago').format()}
+                        year='numeric'
+                        month='short'
+                        day='numeric'
+                        hour='2-digit'
+                        minute='2-digit'
+                        hour12={false}
+                        timeZone='America/Chicago"'
+                        timeZoneName='America/Chicago'
+                    />;
+                </Base>
+            </div>
+        );
+    };
+};
 
 export default App;

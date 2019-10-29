@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "intl": "^1.2.5",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.26",
     "node-sass": "^4.13.0",
     "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.4",
     "react-dom": "^16.8.6",
     "react-dropdown": "^1.6.4",
     "react-intl": "^2.8.0",
@@ -52,16 +55,18 @@
   },
   "browserslist": {
     "production": [
+      "ie 9",
+      "ie 10",
       ">0.2%",
       "not dead",
-      "not op_mini all",
-      "ie 10"
+      "not op_mini all"
     ],
     "development": [
+      "IE 9",
+      "IE 10",
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version",
-      "IE 10"
+      "last 1 safari version"
     ]
   }
 }
