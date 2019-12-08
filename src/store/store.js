@@ -12,7 +12,6 @@ const configStore = () => {
     );
 
     sagaMiddleware.run(rootSaga);
-    store.dispatch( { type :'ActionToBeDispatch'});
 
     return store;
 };

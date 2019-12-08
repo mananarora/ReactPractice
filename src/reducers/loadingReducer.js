@@ -1,12 +1,25 @@
 import {IMAGES} from "../constants";
 
-const loadingReducer = (state = false, action) => {
+const initialState = {
+    isLoading: false,
+    error: ''
+};
+
+const loadingReducer = (state = initialState, action) => {
     switch (action.type) {
         case IMAGES.LOAD:
-            return true;
+            return {
+                ...state, isLoading: true
+            };
         case IMAGES.LOAD_SUCCESS:
+            return {
+                ...state, isLoading: false
+            };
         case IMAGES.LOAD_FAILURE:
-            return  false;
+            return {
+                ...state, isLoading: false, error: 'Error'
+            };
+
 
         default: return state
     }

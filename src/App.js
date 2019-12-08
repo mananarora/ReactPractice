@@ -3,7 +3,7 @@ import './App.css';
 import {Provider} from 'react-redux';
 
 import configStore from './store/store';
-import ImageGrid from "./components/ImageGrid/ImageGrid";
+import ImageGrid from "./Components/ImageGrid/ImageGrid";
 
 const store = configStore();
 
