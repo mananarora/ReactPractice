@@ -6,7 +6,7 @@
     "intl": "^1.2.5",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.4",
     "react-dom": "^16.8.6",
